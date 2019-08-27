@@ -7,6 +7,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.10",
     "@emotion/styled": "^10.0.12",
+    "emotion": "^10.0.14",
     "gatsby": "^2.12.0",
     "gatsby-image": "^2.1.2",
     "gatsby-plugin-catch-links": "^2.0.12",
@@ -21,7 +22,9 @@
     "gatsby-source-filesystem": "^2.0.38",
     "gatsby-source-prismic-graphql": "3.4.0-beta.1",
     "gatsby-transformer-sharp": "^2.1.21",
+    "graphql": "^14.5.3",
     "node-sass": "^4.12.0",
+    "prismic-javascript": "^2.1.1",
     "prismic-reactjs": "^0.3.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
@@ -61,5 +64,8 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "resolutions": {
+    "graphql": "^14.5.3"
   }
 }
