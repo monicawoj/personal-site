@@ -15,7 +15,9 @@ const Hero = styled("div")`
   padding-top: 2.5em;
   padding-bottom: 3em;
   margin-bottom: 6em;
-  max-width: 830px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   @media (max-width: ${dimensions.maxwidthMobile}px) {
     margin-bottom: 3em;
@@ -181,10 +183,6 @@ const RenderBody = ({ home, projects, meta }) => (
       <WorkAction to={"/work"}>
         See more work <span>&#8594;</span>
       </WorkAction>
-    </Section>
-    <Section>
-      {RichText.render(home.about_title)}
-      <About bio={home.about_bio} socialLinks={home.about_links} />
     </Section>
   </>
 )

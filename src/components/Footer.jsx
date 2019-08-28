@@ -49,7 +49,7 @@ const FooterAuthor = styled("a")`
 const Footer = () => (
   <FooterContainer>
     <Link to="/">
-      <Logo />
+      <Logo width={50} height={50} />
     </Link>
     <FooterAuthor href="https://www.linkedin.com/in/monicawoj/">
       {"© 2019 — reflect & refract"}
