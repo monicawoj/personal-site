@@ -1,15 +1,14 @@
-import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
-import { RichText } from "prismic-reactjs"
-import { graphql, Link } from "gatsby"
-import styled from "@emotion/styled"
-import colors from "styles/colors"
-import dimensions from "styles/dimensions"
-import Button from "components/_ui/Button"
-import About from "components/About"
-import Layout from "components/Layout"
-import ProjectCard from "components/ProjectCard"
+import React from "react";
+import PropTypes from "prop-types";
+import Helmet from "react-helmet";
+import { RichText } from "prismic-reactjs";
+import { graphql, Link } from "gatsby";
+import styled from "@emotion/styled";
+import colors from "styles/colors";
+import dimensions from "styles/dimensions";
+import Button from "components/_ui/Button";
+import Layout from "components/Layout";
+import ProjectCard from "components/ProjectCard";
 
 const Hero = styled("div")`
   padding-top: 2.5em;
@@ -73,7 +72,7 @@ const Hero = styled("div")`
       }
     }
   }
-`
+`;
 
 const Section = styled("div")`
   margin-bottom: 10em;
@@ -87,7 +86,7 @@ const Section = styled("div")`
   &:last-of-type {
     margin-bottom: 0;
   }
-`
+`;
 
 const WorkAction = styled(Link)`
   font-weight: 600;
@@ -117,7 +116,7 @@ const WorkAction = styled(Link)`
       transition: transform 150ms ease-in-out;
     }
   }
-`
+`;
 
 const RenderBody = ({ home, projects, meta }) => (
   <>
@@ -185,28 +184,28 @@ const RenderBody = ({ home, projects, meta }) => (
       </WorkAction>
     </Section>
   </>
-)
+);
 
 export default ({ data }) => {
   //Required check for no data being returned
-  const doc = data.prismic.allHomepages.edges.slice(0, 1).pop()
-  const projects = data.prismic.allProjects.edges
-  const meta = data.site.siteMetadata
+  const doc = data.prismic.allHomepages.edges.slice(0, 1).pop();
+  const projects = data.prismic.allProjects.edges;
+  const meta = data.site.siteMetadata;
 
-  if (!doc || !projects) return null
+  if (!doc || !projects) return null;
 
   return (
     <Layout>
       <RenderBody home={doc.node} projects={projects} meta={meta} />
     </Layout>
-  )
-}
+  );
+};
 
 RenderBody.propTypes = {
   home: PropTypes.object.isRequired,
   projects: PropTypes.array.isRequired,
   meta: PropTypes.object.isRequired,
-}
+};
 
 export const query = graphql`
   {
@@ -254,4 +253,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

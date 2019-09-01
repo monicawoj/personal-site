@@ -1,9 +1,11 @@
-import React from "react"
-import Button from "components/_ui/Button"
-import styled from "@emotion/styled"
-import dimensions from "styles/dimensions"
-import { RichText } from "prismic-reactjs"
-import PropTypes from "prop-types"
+import React from "react";
+import Button from "components/_ui/Button";
+import styled from "@emotion/styled";
+import dimensions from "styles/dimensions";
+import { RichText } from "prismic-reactjs";
+import PropTypes from "prop-types";
+
+import LeafAnimation from "./LeafAnimation";
 
 const AboutContainer = styled("div")`
   padding-top: 1em;
@@ -20,7 +22,7 @@ const AboutContainer = styled("div")`
     grid-template-rows: 3em 1fr;
     grid-gap: 2em;
   }
-`
+`;
 
 const AboutLinkContainer = styled("div")`
   padding-top: 1em;
@@ -31,7 +33,7 @@ const AboutLinkContainer = styled("div")`
   @media (max-width: ${dimensions.maxwidthMobile}px) {
     grid-row: 2;
   }
-`
+`;
 
 const AboutLink = styled("a")`
   margin-bottom: 1.5em;
@@ -55,7 +57,7 @@ const AboutLink = styled("a")`
       transition: all 150ms ease-in-out;
     }
   }
-`
+`;
 
 const AboutBio = styled("div")`
   padding-bottom: 3em;
@@ -64,7 +66,7 @@ const AboutBio = styled("div")`
   @media (max-width: ${dimensions.maxwidthMobile}px) {
     grid-row: 2;
   }
-`
+`;
 
 const AboutActions = styled("div")`
   padding-top: 1em;
@@ -75,10 +77,14 @@ const AboutActions = styled("div")`
     grid-column: 1 / -1;
     grid-row: 1;
   }
-`
+`;
 
 const About = ({ bio, socialLinks }) => (
   <AboutContainer>
+    <LeafAnimation
+      dimensions={{ width: 500, height: 500 }}
+      margins={{ top: 10, bottom: 80, left: 30, right: 10 }}
+    />
     <AboutLinkContainer>
       {socialLinks.map((social, i) => (
         <AboutLink
@@ -107,11 +113,11 @@ const About = ({ bio, socialLinks }) => (
       </a>
     </AboutActions>
   </AboutContainer>
-)
+);
 
-export default About
+export default About;
 
 About.propTypes = {
   bio: PropTypes.array.isRequired,
   socialLinks: PropTypes.array.isRequired,
-}
+};
