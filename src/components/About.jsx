@@ -5,8 +5,6 @@ import dimensions from "styles/dimensions";
 import { RichText } from "prismic-reactjs";
 import PropTypes from "prop-types";
 
-import LeafAnimation from "./LeafAnimation";
-
 const AboutContainer = styled("div")`
   padding-top: 1em;
   display: grid;
@@ -81,10 +79,6 @@ const AboutActions = styled("div")`
 
 const About = ({ bio, socialLinks }) => (
   <AboutContainer>
-    <LeafAnimation
-      dimensions={{ width: 500, height: 500 }}
-      margins={{ top: 10, bottom: 80, left: 30, right: 10 }}
-    />
     <AboutLinkContainer>
       {socialLinks.map((social, i) => (
         <AboutLink
