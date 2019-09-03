@@ -1,7 +1,20 @@
+import { interpolate } from "flubber";
+import { easeSin } from "d3-ease";
+import { interpolateRgb } from "d3-interpolate";
 import getTree from "./images/tree.svg";
 import getSun from "./images/sun.svg";
 import getFlower from "./images/flower.svg";
 import getBoxes from "./images/boxes.svg";
+
+export const transitionShape = (transition, { color, path }) => {
+  const element = transition.selection();
+  return transition
+    .delay(2000)
+    .duration(2000)
+    .ease(easeSin)
+    .attrTween("d", () => interpolate(element.attr("d"), path))
+    .attrTween("fill", () => interpolateRgb(element.attr("fill"), color));
+};
 
 export const treePathElements = getTree().props.children[1].props.children.map(
   el => ({
