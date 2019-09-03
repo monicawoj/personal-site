@@ -1,19 +1,19 @@
-import React from "react"
-import { Link } from "gatsby"
-import styled from "@emotion/styled"
-import colors from "styles/colors"
-import dimensions from "styles/dimensions"
-import Logo from "components/_ui/Logo"
+import React from "react";
+import { Link } from "gatsby";
+import styled from "@emotion/styled";
+import colors from "styles/colors";
+import dimensions from "styles/dimensions";
+import Logo from "components/_ui/Logo";
 
 const HeaderContainer = styled("div")`
-  padding-top: 3.75em;
-  padding-bottom: 3em;
-`
+  padding-top: 3em;
+  padding-bottom: 1em;
+`;
 
 const HeaderContent = styled("div")`
   display: flex;
   justify-content: space-between;
-`
+`;
 
 const HeaderLinks = styled("div")`
   display: grid;
@@ -64,7 +64,7 @@ const HeaderLinks = styled("div")`
       }
     }
   }
-`
+`;
 
 const Tagline = styled("div")`
   display: flex;
@@ -76,13 +76,13 @@ const Tagline = styled("div")`
   h2 {
     margin: 0;
   }
-`
+`;
 
 const Header = () => (
   <HeaderContainer>
     <HeaderContent>
       <Link to="/">
-        <Logo width={50} height={50} />
+        <Logo width={100} height={100} />
       </Link>
       <HeaderLinks>
         <Link activeClassName="Link--is-active" to="/work">
@@ -102,10 +102,24 @@ const Header = () => (
     <HeaderContent>
       <Tagline>
         <h1>reflect&refract</h1>
-        <h2>{"for the <3 of Logos"}</h2>
+        <h2>
+          {"for the <3 of"}
+          {
+            <span>
+              <a
+                href={
+                  "https://en.wiktionary.org/wiki/%CE%BB%CF%8C%CE%B3%CE%BF%CF%82"
+                }
+              >
+                λόγος
+              </a>
+            </span>
+          }
+          {}
+        </h2>
       </Tagline>
     </HeaderContent>
   </HeaderContainer>
-)
+);
 
-export default Header
+export default Header;

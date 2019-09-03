@@ -13,13 +13,7 @@ const NatureAnimation = () => {
     const flower = flowerPathElements[i].props.d;
     const tree = treePathElements[i].props.d;
     const boxes = boxesPathElements[i].props.d;
-    return (
-      <PathToPathAnimation
-        pathsArray={[sun, boxes, flower, boxes, tree, boxes]}
-        startPath={sun}
-        endPath={flower}
-      />
-    );
+    return <PathToPathAnimation pathsArray={[sun, flower, tree, boxes]} />;
   });
 
   return (

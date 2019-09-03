@@ -5,84 +5,47 @@ import { active } from "d3-transition";
 import { easeSin } from "d3-ease";
 import { interpolateRgb } from "d3-interpolate";
 
-const PathToPathAnimation = ({ startPath, endPath, pathsArray }) => {
+const PathToPathAnimation = ({ pathsArray }) => {
   let ref = useRef(null);
   const [isAnimationPaused, setIsAnimationPaused] = useState(false);
-  const [count, setCount] = useState(0);
+  const [sun, flower, tree, boxes] = pathsArray;
 
-  const repeat = ({ element, startPath, endPath }) => {
-    setCount(count + 1);
-    let currentEndPathIndex = pathsArray.indexOf(endPath);
-    let newEndPathIndex =
-      currentEndPathIndex === pathsArray.length - 1
-        ? 0
-        : currentEndPathIndex + 1;
-    console.log(count);
-
-    console.log({ currentEndPathIndex, newEndPathIndex });
-    const currentEndPath = pathsArray[currentEndPathIndex];
-    const newEndPath = pathsArray[newEndPathIndex];
+  const repeat = ({ element }) => {
     active(element)
       .transition()
-      .delay(1000)
+      .delay(2000)
       .duration(2000)
       .ease(easeSin)
-      .attrTween("d", () => interpolate(startPath, endPath))
+      .attrTween("d", () => interpolate(sun, flower))
+      .attrTween("fill", () =>
+        interpolateRgb(element.getAttribute("fill"), "pink")
+      )
+      .transition()
+      .delay(2000)
+      .duration(2000)
+      .ease(easeSin)
+      .attrTween("d", () => interpolate(flower, tree))
+      .attrTween("fill", () =>
+        interpolateRgb(element.getAttribute("fill"), "burlywood")
+      )
+      .transition()
+      .delay(2000)
+      .duration(2000)
+      .ease(easeSin)
+      .attrTween("d", () => interpolate(tree, boxes))
       .attrTween("fill", () =>
         interpolateRgb(element.getAttribute("fill"), "#87ba7e")
       )
       .transition()
-      .delay(500)
-      .duration(1000)
+      .delay(2000)
+      .duration(2000)
       .ease(easeSin)
-      .attrTween("d", () => interpolate(endPath, startPath))
+      .attrTween("d", () => interpolate(boxes, sun))
       .attrTween("fill", () =>
-        interpolateRgb(element.getAttribute("fill"), "white")
+        interpolateRgb(element.getAttribute("fill"), "gold")
       )
-      .on("end", () =>
-        repeat({ element, startPath: currentEndPath, endPath: newEndPath })
-      );
+      .on("end", () => repeat({ element }));
   };
-
-  //   pathsArray.forEach(path => {
-  //     const startPathIndex = pathsArray.indexOf(path);
-  //     const startPath = path;
-  //     const endPath =
-  //       startPathIndex === pathsArray.length - 1
-  //         ? pathsArray[0]
-  //         : pathsArray[startPathIndex + 1];
-
-  //     active(element)
-  //       .transition()
-  //       .delay(1000)
-  //       .duration(2000)
-  //       .ease(easeSin)
-  //       .attrTween("d", () => interpolate(startPath, endPath))
-  //       .attrTween("fill", () =>
-  //         interpolateRgb(element.getAttribute("fill"), "#87ba7e")
-  //       );
-  //   });
-
-  //   const repeat = element => {
-  //     active(element)
-  //       .transition()
-  //       .delay(500)
-  //       .duration(1000)
-  //       .ease(easeSin)
-  //       .attrTween("d", () => interpolate(startPath, endPath))
-  //       .attrTween("fill", () =>
-  //         interpolateRgb(element.getAttribute("fill"), "#87ba7e")
-  //       )
-  //       .transition()
-  //       .delay(500)
-  //       .duration(1000)
-  //       .ease(easeSin)
-  //       .attrTween("d", () => interpolate(endPath, startPath))
-  //       .attrTween("fill", () =>
-  //         interpolateRgb(element.getAttribute("fill"), "white")
-  //       )
-  //       .on("end", () => repeat(element));
-  //     };
 
   const resumeAnimation = element => {
     return runAnimation(element);
@@ -93,9 +56,7 @@ const PathToPathAnimation = ({ startPath, endPath, pathsArray }) => {
 
   const runAnimation = element => {
     select(element)
-      .attr("stroke", "#004100")
-      .attr("stroke-width", "10px")
-      .attr("fill", "white")
+      .attr("fill", "gold")
       .on("click", () => {
         setIsAnimationPaused(!isAnimationPaused);
         return isAnimationPaused
@@ -103,9 +64,7 @@ const PathToPathAnimation = ({ startPath, endPath, pathsArray }) => {
           : pauseAnimation(element);
       })
       .transition()
-      .on("end", () =>
-        repeat({ element, startPath: pathsArray[0], endPath: pathsArray[1] })
-      );
+      .on("end", () => repeat({ element }));
   };
 
   useEffect(() => runAnimation(ref.current), []);

@@ -9,20 +9,38 @@ import dimensions from "styles/dimensions";
 import Button from "components/_ui/Button";
 import Layout from "components/Layout";
 import ProjectCard from "components/ProjectCard";
+import NatureAnimation from "components/NatureAnimation";
 
-const Hero = styled("div")`
-  padding-top: 2.5em;
+const HeroContainer = styled("div")`
+  padding-top: 1em;
   padding-bottom: 3em;
   margin-bottom: 6em;
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
   align-items: center;
 
   @media (max-width: ${dimensions.maxwidthMobile}px) {
     margin-bottom: 3em;
+    flex-direction: column;
+    width: 100%;
+  }
+`;
+
+const AnimationContainer = styled("div")`
+  @media (max-width: ${dimensions.maxwidthMobile}px) {
+    width: 100%;
   }
 
-  h1 {
+  width: 50%;
+`;
+
+const Hero = styled("div")`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 50%;
+
+  h2 {
     margin-bottom: 1em;
 
     a {
@@ -158,16 +176,22 @@ const RenderBody = ({ home, projects, meta }) => (
         },
       ].concat(meta)}
     />
-    <Hero>
-      <>{RichText.render(home.hero_title)}</>
-      <a
-        href={home.hero_button_link ? home.hero_button_link.url : ""}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Button>{RichText.render(home.hero_button_text)}</Button>
-      </a>
-    </Hero>
+    <HeroContainer>
+      <AnimationContainer>
+        <NatureAnimation />
+      </AnimationContainer>
+      <Hero>
+        {RichText.render(home.hero_title)}
+        <a
+          href={home.hero_button_link ? home.hero_button_link.url : ""}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button>{RichText.render(home.hero_button_text)}</Button>
+        </a>
+      </Hero>
+    </HeroContainer>
+
     <Section>
       {projects.map((project, i) => (
         <ProjectCard
