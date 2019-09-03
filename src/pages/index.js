@@ -48,19 +48,16 @@ const Hero = styled("div")`
       transition: all 100ms ease-in-out;
 
       &:nth-of-type(1) {
-        color: ${colors.blue500};
+        color: ${colors.themeGreen};
       }
       &:nth-of-type(2) {
-        color: ${colors.orange500};
+        color: ${colors.themeBlue};
       }
       &:nth-of-type(3) {
-        color: ${colors.purple500};
+        color: ${colors.themeGreen};
       }
       &:nth-of-type(4) {
-        color: ${colors.green500};
-      }
-      &:nth-of-type(5) {
-        color: ${colors.teal500};
+        color: ${colors.themeBlue};
       }
 
       &:hover {
@@ -68,24 +65,20 @@ const Hero = styled("div")`
         transition: all 100ms ease-in-out;
 
         &:nth-of-type(1) {
-          color: ${colors.blue600};
-          background-color: ${colors.blue200};
+          color: ${colors.white};
+          background-color: ${colors.grey500};
         }
         &:nth-of-type(2) {
-          color: ${colors.orange600};
-          background-color: ${colors.orange200};
+          color: ${colors.white};
+          background-color: ${colors.grey500};
         }
         &:nth-of-type(3) {
-          color: ${colors.purple600};
-          background-color: ${colors.purple200};
+          color: ${colors.white};
+          background-color: ${colors.grey500};
         }
         &:nth-of-type(4) {
-          color: ${colors.green600};
-          background-color: ${colors.green200};
-        }
-        &:nth-of-type(5) {
-          color: ${colors.teal600};
-          background-color: ${colors.teal200};
+          color: ${colors.white};
+          background-color: ${colors.grey500};
         }
       }
     }
@@ -125,7 +118,7 @@ const WorkAction = styled(Link)`
   }
 
   &:hover {
-    color: ${colors.blue500};
+    color: ${colors.themeGreenDark};
     transition: all 150ms ease-in-out;
 
     span {

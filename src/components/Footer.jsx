@@ -1,8 +1,8 @@
-import React from "react"
-import { Link } from "gatsby"
-import styled from "@emotion/styled"
-import colors from "styles/colors"
-import Logo from "components/_ui/Logo"
+import React from "react";
+import { Link } from "gatsby";
+import styled from "@emotion/styled";
+import colors from "styles/colors";
+import Logo from "components/_ui/Logo";
 
 const FooterContainer = styled("div")`
   padding-top: 3.75em;
@@ -14,7 +14,7 @@ const FooterContainer = styled("div")`
   svg {
     max-width: 50px;
   }
-`
+`;
 
 const FooterAuthor = styled("a")`
   font-size: 0.75em;
@@ -44,7 +44,7 @@ const FooterAuthor = styled("a")`
       transform: rotate(360deg);
     }
   }
-`
+`;
 
 const Footer = () => (
   <FooterContainer>
@@ -55,6 +55,6 @@ const Footer = () => (
       {"© 2019 — reflect & refract"}
     </FooterAuthor>
   </FooterContainer>
-)
+);
 
-export default Footer
+export default Footer;

@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "@emotion/styled";
+
 import colors from "styles/colors";
 import dimensions from "styles/dimensions";
 import Logo from "components/_ui/Logo";
+import Button from "components/_ui/Button";
 
 const HeaderContainer = styled("div")`
   padding-top: 3em;
@@ -16,21 +18,14 @@ const HeaderContent = styled("div")`
 `;
 
 const HeaderLinks = styled("div")`
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  grid-gap: 2em;
+  display: flex;
+  flex-direction: row;
   justify-content: flex-end;
-  max-width: 200px;
-
-  @media (max-width: ${dimensions.maxwidthTablet}px) {
-    grid-gap: 5.5em;
-  }
-
-  @media (max-width: ${dimensions.maxwidthMobile}px) {
-    grid-gap: 2.5em;
-  }
+  align-items: center;
+  max-width: 300px;
 
   a {
+    margin: 2em;
     color: currentColor;
     text-decoration: none;
     border-bottom: 3px solid transparent;
@@ -41,7 +36,14 @@ const HeaderLinks = styled("div")`
     padding-top: 0.25em;
     display: block;
     position: relative;
-    width: 40px;
+
+    @media (max-width: ${dimensions.maxwidthTablet}px) {
+      margin: 5.5em;
+    }
+
+    @media (max-width: ${dimensions.maxwidthMobile}px) {
+      margin: 2.5em;
+    }
 
     div {
       width: 100%;
@@ -52,14 +54,14 @@ const HeaderLinks = styled("div")`
 
     &:hover {
       div {
-        background: ${colors.blue500};
+        background: ${colors.themeGreenDark};
         transition: 100ms ease-in-out background;
       }
     }
 
     &.Link--is-active {
       &:after {
-        background: ${colors.blue500};
+        background: ${colors.themeGreenDark};
         transition: 100ms ease-in-out background;
       }
     }
@@ -78,48 +80,77 @@ const Tagline = styled("div")`
   }
 `;
 
-const Header = () => (
-  <HeaderContainer>
-    <HeaderContent>
-      <Link to="/">
-        <Logo width={100} height={100} />
-      </Link>
-      <HeaderLinks>
-        <Link activeClassName="Link--is-active" to="/work">
-          Work
-          <div />
+const LogosLink = styled("a")`
+  text-decoration: none;
+  color: ${colors.themeBlue};
+  &:hover {
+    color: ${colors.themeGreen};
+  }
+
+  .english {
+    display: inline;
+  }
+  .greek {
+    display: none;
+  }
+  &:hover {
+    .english {
+      display: none;
+    }
+
+    .greek {
+      display: inline;
+    }
+  }
+`;
+
+const Header = () => {
+  return (
+    <HeaderContainer>
+      <HeaderContent>
+        <Link to="/">
+          <Logo width={100} height={100} />
         </Link>
-        <Link activeClassName="Link--is-active" to="/blog">
-          Blog
-          <div />
-        </Link>
-        <Link activeClassName="Link--is-active" to="/about">
-          About
-          <div />
-        </Link>
-      </HeaderLinks>
-    </HeaderContent>
-    <HeaderContent>
-      <Tagline>
-        <h1>reflect&refract</h1>
-        <h2>
-          {"for the <3 of"}
-          {
-            <span>
-              <a
-                href={
-                  "https://en.wiktionary.org/wiki/%CE%BB%CF%8C%CE%B3%CE%BF%CF%82"
-                }
+        <HeaderLinks>
+          <Link activeClassName="Link--is-active" to="/about">
+            About
+            <div />
+          </Link>
+          <Link activeClassName="Link--is-active" to="/blog">
+            Reflections (Blog)
+            <div />
+          </Link>
+          <Link activeClassName="Link--is-active" to="/work">
+            Refractions (Data Viz)
+            <div />
+          </Link>
+          <Link activeClassName="Link--is-active" to="/speaker">
+            Speaking
+            <div />
+          </Link>
+        </HeaderLinks>
+      </HeaderContent>
+      <HeaderContent>
+        <Tagline>
+          <h1>reflect&refract</h1>
+          <h2>
+            {"for the <3 of "}
+            {
+              <LogosLink
+                href="https://en.wiktionary.org/wiki/%CE%BB%CF%8C%CE%B3%CE%BF%CF%82"
+                className="Button--secondary"
+                target="_blank"
               >
-                λόγος
-              </a>
-            </span>
-          }
-          {}
-        </h2>
-      </Tagline>
-    </HeaderContent>
-  </HeaderContainer>
-);
+                <span className="english">logos</span>
+                <span className="greek">λόγος</span>
+              </LogosLink>
+            }
+            {}
+          </h2>
+        </Tagline>
+      </HeaderContent>
+    </HeaderContainer>
+  );
+};
 
 export default Header;

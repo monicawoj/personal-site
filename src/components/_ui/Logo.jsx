@@ -1,9 +1,10 @@
-import React from "react"
-import { injectGlobal } from "emotion"
+import React from "react";
+import { injectGlobal } from "emotion";
+import colors from "styles/colors";
 
 injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=Oregano&display=swap');
-`
+`;
 
 const Logo = ({ width, height }) => (
   <svg
@@ -15,39 +16,8 @@ const Logo = ({ width, height }) => (
     height={height}
     viewBox="0 0 601.37 647.42"
   >
-    <defs>
-      <linearGradient
-        id="gradientb744Tu1pF"
-        gradientUnits="userSpaceOnUse"
-        x1="558.49"
-        y1="612.19"
-        x2="701.72"
-        y2="852.37"
-      >
-        <stop style={{ stopColor: "#87ba7e", stopOpacity: "1" }} offset="0%" />
-        <stop
-          style={{ stopColor: "#004100", stopOpacity: "1" }}
-          offset="100%"
-        />
-      </linearGradient>
-      <linearGradient
-        id="gradientcQqVVHkEW"
-        gradientUnits="userSpaceOnUse"
-        x1="558.49"
-        y1="612.19"
-        x2="701.72"
-        y2="852.37"
-      >
-        <stop style={{ stopColor: "#87ba7e", stopOpacity: "1" }} offset="0%" />
-        <stop
-          style={{ stopColor: "#004100", stopOpacity: "1" }}
-          offset="100%"
-        />
-      </linearGradient>
-    </defs>
-    <path d="M611.36 619.87L611.36 11.87" id="f1yQ2GTWc" />
-    <path d="M9.99 629.76L9.99 21.76" id="bFxEGvCfg" />
     <text
+      class="logo-letter"
       id="b2YgIGjlok"
       x="396.66"
       y="256.99"
@@ -61,6 +31,7 @@ const Logo = ({ width, height }) => (
       style={{ lineHeight: "100%" }}
       xmlSpace="preserve"
       dominant-baseline="text-before-edge"
+      fill={colors.themeBlue}
     >
       <tspan
         x="396.66"
@@ -74,6 +45,7 @@ const Logo = ({ width, height }) => (
     </text>
 
     <text
+      class="logo-letter"
       id="daQWgPKoV"
       x="396.66"
       y="256.99"
@@ -87,6 +59,7 @@ const Logo = ({ width, height }) => (
       style={{ lineHeight: "100%" }}
       xmlSpace="preserve"
       dominant-baseline="text-before-edge"
+      fill={colors.themeBlue}
     >
       <tspan
         x="396.66"
@@ -98,44 +71,7 @@ const Logo = ({ width, height }) => (
         R
       </tspan>
     </text>
-
-    <g>
-      <g id="fpy2zxNm6">
-        <use
-          xlinkHref="#b2YgIGjlok"
-          opacity="1"
-          fill="url(#gradientb744Tu1pF)"
-        />
-        <g>
-          <use
-            xlinkHref="#b2YgIGjlok"
-            opacity="1"
-            fill-opacity="0"
-            stroke="#1ca8f0"
-            stroke-width="0"
-            stroke-opacity="1"
-          />
-        </g>
-      </g>
-      <g id="d5FtCH1cXC">
-        <use
-          xlinkHref="#daQWgPKoV"
-          opacity="1"
-          fill="url(#gradientcQqVVHkEW)"
-        />
-        <g>
-          <use
-            xlinkHref="#daQWgPKoV"
-            opacity="1"
-            fill-opacity="0"
-            stroke="#1ca8f0"
-            stroke-width="0"
-            stroke-opacity="1"
-          />
-        </g>
-      </g>
-    </g>
   </svg>
-)
+);
 
-export default Logo
+export default Logo;

@@ -1,5 +1,6 @@
-import React, { useRef, useEffect, useState } from "react";
-import { select, selectAll } from "d3-selection";
+import React, { useRef, useEffect } from "react";
+import { select } from "d3-selection";
+import colors from "styles/colors";
 import { active } from "d3-transition";
 
 import { transitionShape } from "./utils";
@@ -7,27 +8,28 @@ import { transitionShape } from "./utils";
 const ShapeTransition = ({ pathsArray }) => {
   let ref = useRef(null);
   const [sun, flower, tree, boxes] = pathsArray;
+  const { themeBlue, themeGreen, themeGreenDark, themeGreenLight } = colors;
 
   const repeat = ({ element }) => {
     active(element)
       .transition()
       .call(transitionShape, {
-        color: "pink",
+        color: themeBlue,
         path: flower,
       })
       .transition()
       .call(transitionShape, {
-        color: "burlywood",
+        color: themeGreenDark,
         path: tree,
       })
       .transition()
       .call(transitionShape, {
-        color: "#87ba7e",
+        color: themeGreenLight,
         path: boxes,
       })
       .transition()
       .call(transitionShape, {
-        color: "gold",
+        color: themeGreen,
         path: sun,
       })
       .on("end", () => repeat({ element }));
@@ -35,7 +37,7 @@ const ShapeTransition = ({ pathsArray }) => {
 
   const runAnimation = element =>
     select(element)
-      .attr("fill", "gold")
+      .attr("fill", themeGreen)
       .transition()
       .on("end", () => repeat({ element }));
 
