@@ -99,7 +99,7 @@ const About = ({ bio, socialLinks }) => (
     <AboutBio>{RichText.render(bio)}</AboutBio>
     <AboutActions>
       <a
-        href="mailto:marguerite.roth@gmail.com"
+        href="mailto:monica.wojciechowski@gmail.com"
         target="_blank"
         rel="noopener noreferrer"
       >

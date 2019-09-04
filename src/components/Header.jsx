@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "@emotion/styled";
+import TextLoop from "react-text-loop";
 
 import colors from "styles/colors";
 import dimensions from "styles/dimensions";
 import Logo from "components/_ui/Logo";
-import Button from "components/_ui/Button";
 
 const HeaderContainer = styled("div")`
   padding-top: 3em;
@@ -117,11 +117,11 @@ const Header = () => {
             <div />
           </Link>
           <Link activeClassName="Link--is-active" to="/blog">
-            Reflections (Blog)
+            Blog
             <div />
           </Link>
           <Link activeClassName="Link--is-active" to="/work">
-            Refractions (Data Viz)
+            My Work
             <div />
           </Link>
           <Link activeClassName="Link--is-active" to="/speaker">
@@ -132,7 +132,7 @@ const Header = () => {
       </HeaderContent>
       <HeaderContent>
         <Tagline>
-          <h1>reflect&refract</h1>
+          <h1>reflect&reason</h1>
           <h2>
             {"for the <3 of "}
             {
@@ -141,8 +141,29 @@ const Header = () => {
                 className="Button--secondary"
                 target="_blank"
               >
-                <span className="english">logos</span>
-                <span className="greek">λόγος</span>
+                <TextLoop
+                  interval={4000}
+                  adjustingSpeed={500}
+                  springConfig={{ stiffness: 170, damping: 30 }}
+                  children={[
+                    "Logos",
+                    "λόγος",
+                    "thought",
+                    "speech",
+                    "story",
+                    "information",
+                    "Word",
+                    "logic",
+                    "explanation",
+                    "contemplation",
+                    "God",
+                    "dialogue",
+                    "creativity",
+                    "rationality",
+                    "rhetoric",
+                    "discourse",
+                  ]}
+                />
               </LogosLink>
             }
             {}

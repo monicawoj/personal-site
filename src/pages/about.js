@@ -1,12 +1,12 @@
-import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
-import { RichText } from "prismic-reactjs"
-import { graphql } from "gatsby"
-import styled from "@emotion/styled"
-import dimensions from "styles/dimensions"
-import About from "components/About"
-import Layout from "components/Layout"
+import React from "react";
+import PropTypes from "prop-types";
+import Helmet from "react-helmet";
+import { RichText } from "prismic-reactjs";
+import { graphql } from "gatsby";
+import styled from "@emotion/styled";
+import dimensions from "styles/dimensions";
+import About from "components/About";
+import Layout from "components/Layout";
 
 const Section = styled("div")`
   margin-bottom: 10em;
@@ -20,7 +20,7 @@ const Section = styled("div")`
   &:last-of-type {
     margin-bottom: 0;
   }
-`
+`;
 
 const AboutPage = ({ home, meta }) => (
   <>
@@ -67,26 +67,26 @@ const AboutPage = ({ home, meta }) => (
       <About bio={home.about_bio} socialLinks={home.about_links} />
     </Section>
   </>
-)
+);
 
 export default ({ data }) => {
   //Required check for no data being returned
-  const doc = data.prismic.allHomepages.edges.slice(0, 1).pop()
-  const meta = data.site.siteMetadata
+  const doc = data.prismic.allHomepages.edges.slice(0, 1).pop();
+  const meta = data.site.siteMetadata;
 
-  if (!doc) return null
+  if (!doc) return null;
 
   return (
     <Layout>
       <AboutPage home={doc.node} meta={meta} />
     </Layout>
-  )
-}
+  );
+};
 
 AboutPage.propTypes = {
   home: PropTypes.object.isRequired,
   meta: PropTypes.object.isRequired,
-}
+};
 
 export const query = graphql`
   {
@@ -120,4 +120,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

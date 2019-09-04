@@ -10,6 +10,7 @@ import Button from "components/_ui/Button";
 import Layout from "components/Layout";
 import ProjectCard from "components/ProjectCard";
 import NatureAnimation from "components/NatureAnimation";
+import HomeContent from "components/HomeContent";
 
 const HeroContainer = styled("div")`
   padding-top: 1em;
@@ -186,6 +187,10 @@ const RenderBody = ({ home, projects, meta }) => (
     </HeroContainer>
 
     <Section>
+      <HomeContent content={home.content} />
+    </Section>
+
+    <Section>
       {projects.map((project, i) => (
         <ProjectCard
           key={i}
@@ -239,11 +244,6 @@ export const query = graphql`
               }
             }
             content
-            about_title
-            about_bio
-            about_links {
-              about_link
-            }
           }
         }
       }
