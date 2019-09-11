@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `reflect & refract | Monica Wojciechowska`,
-    description: `Rooted in adventure`,
+    title: `Reflecting Reason | Monica Wojciechowska`,
+    description: `for the love of thought, speech, and story`,
     author: `Monica Wojciechowska`,
   },
   plugins: [
@@ -33,11 +33,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-prismic-starter-prist`,
-        short_name: `prist`,
+        name: `Reflecting Reason`,
+        short_name: `ReflectingReason`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#eee`,
+        theme_color: `#eee`,
         display: `minimal-ui`,
         icon: `src/images/logo.png`, // This path is relative to the root of the site.
       },

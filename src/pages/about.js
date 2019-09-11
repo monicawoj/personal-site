@@ -1,12 +1,12 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { shape } from "prop-types";
 import Helmet from "react-helmet";
 import { RichText } from "prismic-reactjs";
-import { graphql } from "gatsby";
 import styled from "@emotion/styled";
 import dimensions from "styles/dimensions";
 import About from "components/About";
 import Layout from "components/Layout";
+import { useSiteMetadata, useAboutData } from "../hooks";
 
 const Section = styled("div")`
   margin-bottom: 10em;
@@ -22,7 +22,7 @@ const Section = styled("div")`
   }
 `;
 
-const AboutPage = ({ home, meta }) => (
+const AboutPage = ({ data, meta }) => (
   <>
     <Helmet
       title={meta.title}
@@ -63,61 +63,26 @@ const AboutPage = ({ home, meta }) => (
       ].concat(meta)}
     />
     <Section>
-      {RichText.render(home.about_title)}
-      <About bio={home.about_bio} socialLinks={home.about_links} />
+      {RichText.render(data.about_title)}
+      <About bio={data.about_bio} socialLinks={data.about_links} />
     </Section>
   </>
 );
 
-export default ({ data }) => {
-  //Required check for no data being returned
-  const doc = data.prismic.allHomepages.edges.slice(0, 1).pop();
-  const meta = data.site.siteMetadata;
+export default () => {
+  const metaData = useSiteMetadata();
+  const aboutData = useAboutData();
 
-  if (!doc) return null;
+  if (!aboutData) return null;
 
   return (
     <Layout>
-      <AboutPage home={doc.node} meta={meta} />
+      <AboutPage data={aboutData} meta={metaData} />
     </Layout>
   );
 };
 
 AboutPage.propTypes = {
-  home: PropTypes.object.isRequired,
-  meta: PropTypes.object.isRequired,
+  about: shape({}).isRequired,
+  meta: shape({}).isRequired,
 };
-
-export const query = graphql`
-  {
-    prismic {
-      allHomepages {
-        edges {
-          node {
-            hero_title
-            hero_button_text
-            hero_button_link {
-              ... on PRISMIC__ExternalLink {
-                _linkType
-                url
-              }
-            }
-            content
-            about_title
-            about_bio
-            about_links {
-              about_link
-            }
-          }
-        }
-      }
-    }
-    site {
-      siteMetadata {
-        title
-        description
-        author
-      }
-    }
-  }
-`;

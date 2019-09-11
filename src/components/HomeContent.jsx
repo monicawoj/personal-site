@@ -9,16 +9,30 @@ import colors from "styles/colors";
 const Container = styled("div")`
   padding-top: 1em;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 `;
 
 const Content = styled("div")`
   padding-bottom: 3em;
+  width: 60%;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  ul {
+    font-size: 1.2em;
+    li {
+      margin-top: 10px;
+    }
+  }
 
   @media (max-width: ${dimensions.maxwidthMobile}px) {
-    grid-row: 2;
+    width: 100%;
   }
 
   a {
@@ -48,7 +62,7 @@ const HomeContent = ({ content }) => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Button className="Button--secondary">Email me</Button>
+        <Button className="Button--secondary">Let's chat?</Button>
       </a>
     </Actions>
   </Container>
