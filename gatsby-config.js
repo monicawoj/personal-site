@@ -14,6 +14,7 @@ module.exports = {
     `gatsby-plugin-resolve-src`,
     `gatsby-plugin-remove-trailing-slashes`,
     `gatsby-plugin-emotion`,
+    `gatsby-plugin-netlify`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
