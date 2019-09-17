@@ -7,19 +7,6 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import dimensions from "styles/dimensions";
 import colors from "styles/colors";
 
-// const NavBar = styled("div")`
-//   display: flex;
-//   flex-direction: row-reverse;
-//   align-items: center;
-//   justify-content: center;
-
-//   @media (max-width: ${dimensions.maxwidthTablet}px) {
-//     flex-direction: column;
-//     align-items: flex-end;
-//     justify-content: flex-end;
-//   }
-// `;
-
 const NavBar = styled("div")`
   display: flex;
   flex-direction: column;
@@ -109,15 +96,18 @@ export default () => {
           <div />
         </Link>
         <Link activeClassName="Link--is-active" to="/blog">
-          Blog
+          Thoughts
+          {/* The Verbal (Writing) */}
           <div />
         </Link>
         <Link activeClassName="Link--is-active" to="/work">
-          My Work
+          Projects
+          {/* The Visual (Projects) */}
           <div />
         </Link>
         <Link activeClassName="Link--is-active" to="/speaking">
-          Speaking
+          Presentations
+          {/* The Audible (Speaking) */}
           <div />
         </Link>
       </NavbarItems>

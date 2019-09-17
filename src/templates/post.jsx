@@ -1,12 +1,13 @@
-import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
-import Moment from "react-moment"
-import { graphql } from "gatsby"
-import { RichText } from "prismic-reactjs"
-import styled from "@emotion/styled"
-import colors from "styles/colors"
-import Layout from "components/Layout"
+import React from "react";
+import PropTypes from "prop-types";
+import Helmet from "react-helmet";
+import Moment from "react-moment";
+import { graphql } from "gatsby";
+import { RichText } from "prismic-reactjs";
+import styled from "@emotion/styled";
+import colors from "styles/colors";
+import Layout from "components/Layout";
+import ImageGallery from "components/ImageGallery";
 
 const PostHeroContainer = styled("div")`
   max-height: 500px;
@@ -19,7 +20,7 @@ const PostHeroContainer = styled("div")`
   img {
     width: 100%;
   }
-`
+`;
 
 const PostHeroAnnotation = styled("div")`
   padding-top: 0.25em;
@@ -34,7 +35,7 @@ const PostHeroAnnotation = styled("div")`
   a {
     color: currentColor;
   }
-`
+`;
 
 const PostCategory = styled("div")`
   max-width: 550px;
@@ -47,17 +48,16 @@ const PostCategory = styled("div")`
     margin-top: 0;
     margin-bottom: 1em;
   }
-`
+`;
 
 const PostTitle = styled("div")`
-  max-width: 550px;
   margin: 0 auto;
   text-align: center;
 
   h1 {
     margin-top: 0;
   }
-`
+`;
 
 const PostBody = styled("div")`
   max-width: 550px;
@@ -71,7 +71,7 @@ const PostBody = styled("div")`
       width: 100%;
     }
   }
-`
+`;
 
 const PostMetas = styled("div")`
   max-width: 550px;
@@ -82,21 +82,24 @@ const PostMetas = styled("div")`
   justify-content: space-between;
   font-size: 0.85em;
   color: ${colors.grey600};
-`
+`;
 
 const PostAuthor = styled("div")`
   margin: 0;
-`
+`;
 
 const PostDate = styled("div")`
   margin: 0;
-`
+`;
 
 const Post = ({ post, meta }) => {
+  const titleText = post.post_title[0].text;
+  const postImages = post.image_gallery;
+
   return (
     <>
       <Helmet
-        title={`${post.post_title[0].text} | reflect & refract`}
+        title={`${titleText} | reflect & refract`}
         titleTemplate={`%s | ${meta.title}`}
         meta={[
           {
@@ -105,7 +108,7 @@ const Post = ({ post, meta }) => {
           },
           {
             property: `og:title`,
-            content: `${post.post_title[0].text} | reflect & refract`,
+            content: `${titleText} | reflect & refract`,
           },
           {
             property: `og:description`,
@@ -135,7 +138,9 @@ const Post = ({ post, meta }) => {
       />
       <Layout>
         <PostCategory>{RichText.render(post.post_category)}</PostCategory>
-        <PostTitle>{RichText.render(post.post_title)}</PostTitle>
+        <PostTitle>
+          <h1>{titleText}</h1>
+        </PostTitle>
         <PostMetas>
           <PostAuthor>{post.post_author}</PostAuthor>
           <PostDate>
@@ -144,28 +149,29 @@ const Post = ({ post, meta }) => {
         </PostMetas>
         {post.post_hero_image && (
           <PostHeroContainer>
-            <img src={post.post_hero_image.url} alt="bees" />
+            <img src={post.post_hero_image.url} />
             <PostHeroAnnotation>
               {RichText.render(post.post_hero_annotation)}
             </PostHeroAnnotation>
           </PostHeroContainer>
         )}
         <PostBody>{RichText.render(post.post_body)}</PostBody>
+        {postImages[0].image && <ImageGallery items={postImages} />}
       </Layout>
     </>
-  )
-}
+  );
+};
 
 export default ({ data }) => {
-  const postContent = data.prismic.allPosts.edges[0].node
-  const meta = data.site.siteMetadata
-  return <Post post={postContent} meta={meta} />
-}
+  const postContent = data.prismic.allPosts.edges[0].node;
+  const meta = data.site.siteMetadata;
+  return <Post post={postContent} meta={meta} />;
+};
 
 Post.propTypes = {
   post: PropTypes.object.isRequired,
   meta: PropTypes.object.isRequired,
-}
+};
 
 export const query = graphql`
   query PostQuery($uid: String) {
@@ -181,6 +187,10 @@ export const query = graphql`
             post_body
             post_author
             post_preview_description
+            image_gallery {
+              image
+              image_caption
+            }
             _meta {
               uid
             }
@@ -196,4 +206,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

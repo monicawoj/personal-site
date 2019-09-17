@@ -1,12 +1,13 @@
 import React from "react";
 import Moment from "react-moment";
-import { Link } from "gatsby";
 import { RichText } from "prismic-reactjs";
 import styled from "@emotion/styled";
-import colors from "styles/colors";
 import { shape, array, string } from "prop-types";
 
-const PresentationCardContainer = styled(Link)`
+import { ThemeLink } from "components/theme";
+import colors from "styles/colors";
+
+const PresentationCardContainer = styled("div")`
   border: 1px solid ${colors.grey200};
   padding: 3em 2.5em 2.25em 2.5em;
   border-radius: 3px;
@@ -16,6 +17,7 @@ const PresentationCardContainer = styled(Link)`
   flex-direction: column;
   box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.06);
   transition: all 150ms ease-in-out;
+  margin-left: 2em;
 
   &:hover {
     box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.1);
@@ -35,12 +37,7 @@ const PresentationCardContainer = styled(Link)`
   }
 `;
 
-const PresentationCategory = styled("h6")`
-  font-weight: 600;
-  color: ${colors.grey600};
-`;
-
-const PresentationTitle = styled("h3")`
+const ConferenceName = styled("h3")`
   margin: 0;
   margin-top: 0.5em;
 `;
@@ -62,26 +59,9 @@ const PresentationDate = styled("div")`
   margin: 0;
 `;
 
-const PresentationDescription = styled("div")`
-  margin-top: 2em;
-  margin-bottom: 4em;
-
+const PresentationTitle = styled("div")`
   p:last-of-type {
     margin: 0;
-  }
-`;
-
-const PresentationCardAction = styled("div")`
-  font-weight: 600;
-  text-decoration: none;
-  color: currentColor;
-  transition: all 150ms ease-in-out;
-
-  span {
-    margin-left: 1em;
-    transform: translateX(-8px);
-    display: inline-block;
-    transition: transform 400ms ease-in-out;
   }
 `;
 
@@ -90,19 +70,24 @@ const PresentationCard = ({
   location_latlng: { latitude, longitude },
   presentation_date: date,
   conference_name: conferenceName,
-  presentation_title: title,
+  conference_link: conferenceLink,
+  presentation_title: presentationTitle,
+  presentation_link: presentationLink,
 }) => {
   return (
-    // <PresentationCardContainer to={`/speaking/${uid}`}>
-    <PresentationCardContainer to={`/speaking/`}>
-      <PresentationCategory>Data viz</PresentationCategory>
-      <PresentationTitle>{RichText.render(conferenceName)}</PresentationTitle>
-      <PresentationDescription>
-        {RichText.render(title)}
-      </PresentationDescription>
-      {/* <PresentationCardAction className="PresentationCardAction">
-        Read more <span>&#8594;</span>
-      </PresentationCardAction> */}
+    <PresentationCardContainer>
+      <ConferenceName>
+        <ThemeLink
+          href={conferenceLink[0].text}
+          className="Button--secondary"
+          target="_blank"
+        >
+          {RichText.render(conferenceName)}
+        </ThemeLink>
+      </ConferenceName>
+      <PresentationTitle>
+        {RichText.render(presentationTitle)}
+      </PresentationTitle>
       <PresentationMetas>
         <PresentationAuthor>{RichText.render(location)}</PresentationAuthor>
         <PresentationDate>

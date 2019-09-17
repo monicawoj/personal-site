@@ -63,7 +63,7 @@ const AboutPage = ({ data, meta }) => (
       ].concat(meta)}
     />
     <Section>
-      {RichText.render(data.about_title)}
+      <h1>{data.about_title[0].text}</h1>
       <About bio={data.about_bio} socialLinks={data.about_links} />
     </Section>
   </>

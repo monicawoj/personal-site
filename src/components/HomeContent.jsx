@@ -1,9 +1,10 @@
 import React from "react";
-import Button from "components/_ui/Button";
 import styled from "@emotion/styled";
 import dimensions from "styles/dimensions";
 import { RichText } from "prismic-reactjs";
 import PropTypes from "prop-types";
+
+import { ThemeButton } from "components/theme";
 import colors from "styles/colors";
 
 const Container = styled("div")`
@@ -53,6 +54,7 @@ const Actions = styled("div")`
   }
 `;
 
+// TODO: add sound player with Mokłuczka tweets on hover of 'tweets I hear'
 const HomeContent = ({ content }) => (
   <Container>
     <Content>{RichText.render(content)}</Content>
@@ -62,7 +64,9 @@ const HomeContent = ({ content }) => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Button className="Button--secondary">Let's chat?</Button>
+        <ThemeButton className="Button--secondary">
+          And there's always EMAIL :)
+        </ThemeButton>
       </a>
     </Actions>
   </Container>

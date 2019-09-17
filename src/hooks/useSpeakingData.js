@@ -17,6 +17,7 @@ export const useSpeakingData = () => {
               presentations {
                 conference_location
                 conference_name
+                conference_link
                 location_latlng
                 presentation_date
                 presentation_title

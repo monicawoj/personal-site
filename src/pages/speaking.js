@@ -22,11 +22,24 @@ const Section = styled("div")`
   }
 `;
 
+const TitleContainer = styled("div")`
+  margin: 0;
+`;
+
 const SpeakingPage = () => {
   const meta = useSiteMetadata();
   const { title, subtitle, presentations } = useSpeakingData();
+  const sortByDate = (a, b) =>
+    new Date(b.presentation_date) - new Date(a.presentation_date);
 
-  if (!title) return null;
+  if (!title || !presentations.length) return null;
+
+  const pastPresentations = presentations
+    .filter(item => new Date(item.presentation_date) <= new Date())
+    .sort(sortByDate);
+  const upcomingPresentations = presentations
+    .filter(item => new Date(item.presentation_date) > new Date())
+    .sort(sortByDate);
 
   return (
     <Layout>
@@ -70,12 +83,18 @@ const SpeakingPage = () => {
           ].concat(meta)}
         />
         <Section>
-          {RichText.render(title)}
-          {subtitle && RichText.render(subtitle)}
-        </Section>
-        <Section>
-          {presentations.length &&
-            presentations.map(item => <PresentationCard {...item} />)}
+          <TitleContainer>
+            <h1>{title[0].text}</h1>
+            {/* <h2>{subtitle && subtitle[0].text}</h2> */}
+          </TitleContainer>
+          <h3>Upcoming</h3>
+          {upcomingPresentations.map(item => (
+            <PresentationCard {...item} />
+          ))}
+          <h3>Past</h3>
+          {pastPresentations.map(item => (
+            <PresentationCard {...item} />
+          ))}
         </Section>
       </>
     </Layout>

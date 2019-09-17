@@ -6,7 +6,7 @@ import { graphql, Link } from "gatsby";
 import styled from "@emotion/styled";
 import colors from "styles/colors";
 import dimensions from "styles/dimensions";
-import Button from "components/_ui/Button";
+import { ThemeButton } from "components/theme";
 import Layout from "components/Layout";
 import ProjectCard from "components/ProjectCard";
 import NatureAnimation from "components/NatureAnimation";
@@ -47,40 +47,13 @@ const Hero = styled("div")`
     a {
       text-decoration: none;
       transition: all 100ms ease-in-out;
-
-      &:nth-of-type(1) {
-        color: ${colors.themeGreen};
-      }
-      &:nth-of-type(2) {
-        color: ${colors.themeBlue};
-      }
-      &:nth-of-type(3) {
-        color: ${colors.themeGreen};
-      }
-      &:nth-of-type(4) {
-        color: ${colors.themeBlue};
-      }
+      color: ${colors.themeBlue};
 
       &:hover {
         cursor: pointer;
         transition: all 100ms ease-in-out;
-
-        &:nth-of-type(1) {
-          color: ${colors.white};
-          background-color: ${colors.grey500};
-        }
-        &:nth-of-type(2) {
-          color: ${colors.white};
-          background-color: ${colors.grey500};
-        }
-        &:nth-of-type(3) {
-          color: ${colors.white};
-          background-color: ${colors.grey500};
-        }
-        &:nth-of-type(4) {
-          color: ${colors.white};
-          background-color: ${colors.grey500};
-        }
+        color: ${colors.white};
+        background-color: ${colors.themeGreenDark};
       }
     }
   }
@@ -130,83 +103,80 @@ const WorkAction = styled(Link)`
   }
 `;
 
-const RenderBody = ({ home, projects, meta }) => (
-  <>
-    <Helmet
-      title={meta.title}
-      titleTemplate={`%s | ${meta.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: meta.description,
-        },
-        {
-          property: `og:title`,
-          content: meta.title,
-        },
-        {
-          property: `og:description`,
-          content: meta.description,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: meta.author,
-        },
-        {
-          name: `twitter:title`,
-          content: meta.title,
-        },
-        {
-          name: `twitter:description`,
-          content: meta.description,
-        },
-      ].concat(meta)}
-    />
-    <HeroContainer>
-      <AnimationContainer>
-        <NatureAnimation />
-      </AnimationContainer>
-      <Hero>
-        {RichText.render(home.hero_title)}
-        <a
-          href={home.hero_button_link ? home.hero_button_link.url : ""}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Button>{RichText.render(home.hero_button_text)}</Button>
-        </a>
-      </Hero>
-    </HeroContainer>
+const RenderBody = ({ home, projects, meta }) =>
+  console.log(home) || (
+    <>
+      <Helmet
+        title={meta.title}
+        titleTemplate={`%s | ${meta.title}`}
+        meta={[
+          {
+            name: `description`,
+            content: meta.description,
+          },
+          {
+            property: `og:title`,
+            content: meta.title,
+          },
+          {
+            property: `og:description`,
+            content: meta.description,
+          },
+          {
+            property: `og:type`,
+            content: `website`,
+          },
+          {
+            name: `twitter:card`,
+            content: `summary`,
+          },
+          {
+            name: `twitter:creator`,
+            content: meta.author,
+          },
+          {
+            name: `twitter:title`,
+            content: meta.title,
+          },
+          {
+            name: `twitter:description`,
+            content: meta.description,
+          },
+        ].concat(meta)}
+      />
+      <HeroContainer>
+        <AnimationContainer>
+          <NatureAnimation />
+        </AnimationContainer>
+        <Hero>
+          {RichText.render(home.hero_title)}
+          <Link to={"/about"}>
+            <ThemeButton>{home.hero_button_text[0].text}</ThemeButton>
+          </Link>
+        </Hero>
+      </HeroContainer>
 
-    <Section>
-      <HomeContent content={home.content} />
-    </Section>
+      <Section>
+        <HomeContent content={home.content} />
+      </Section>
 
-    <Section>
-      {projects.map((project, i) => (
-        <ProjectCard
-          key={i}
-          category={project.node.project_category}
-          title={project.node.project_title}
-          description={project.node.project_preview_description}
-          thumbnail={project.node.project_preview_thumbnail}
-          uid={project.node._meta.uid}
-        />
-      ))}
-      <WorkAction to={"/work"}>
-        See more work <span>&#8594;</span>
-      </WorkAction>
-    </Section>
-  </>
-);
+      <Section>
+        {projects.map((project, i) => (
+          <ProjectCard
+            key={i}
+            category={project.node.project_category}
+            title={project.node.project_title}
+            description={project.node.project_preview_description}
+            thumbnail={project.node.project_preview_thumbnail}
+            uid={project.node._meta.uid}
+          />
+        ))}
+        <WorkAction to={"/work"}>
+          See more work <span>&#8594;</span>
+        </WorkAction>
+      </Section>
+    </>
+  );
 
 export default ({ data }) => {
   //Required check for no data being returned

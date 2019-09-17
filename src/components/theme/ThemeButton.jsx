@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "@emotion/styled";
 import colors from "styles/colors";
 import dimensions from "styles/dimensions";
@@ -58,15 +58,8 @@ const ButtonContainer = styled("button")`
   }
 `;
 
-class Button extends Component {
-  render() {
-    const { children, ...props } = this.props;
-    return (
-      <ButtonContainer onClick={this.props.onClick} {...props}>
-        {this.props.children}
-      </ButtonContainer>
-    );
-  }
-}
-
-export default Button;
+export const ThemeButton = ({ children, ...props }) => (
+  <ButtonContainer onClick={props.onClick} {...props}>
+    {children}
+  </ButtonContainer>
+);

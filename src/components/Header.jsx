@@ -3,8 +3,8 @@ import { Link } from "gatsby";
 import styled from "@emotion/styled";
 import TextLoop from "react-text-loop";
 
-import colors from "styles/colors";
-import Logo from "components/_ui/Logo";
+import Logo from "components/Logo";
+import { ThemeLink } from "components/theme";
 import NavBar from "./NavBar";
 
 const HeaderContainer = styled("div")`
@@ -29,30 +29,6 @@ const Tagline = styled("div")`
   }
 `;
 
-const LogosLink = styled("a")`
-  text-decoration: none;
-  color: ${colors.themeBlue};
-  &:hover {
-    color: ${colors.themeGreen};
-  }
-
-  .english {
-    display: inline;
-  }
-  .greek {
-    display: none;
-  }
-  &:hover {
-    .english {
-      display: none;
-    }
-
-    .greek {
-      display: inline;
-    }
-  }
-`;
-
 const Header = () => {
   return (
     <HeaderContainer>
@@ -65,19 +41,19 @@ const Header = () => {
       <HeaderContent>
         <Tagline>
           <h1>
-            REFLECTING <span style={{ fontWeight: 500 }}>|</span> REASON
+            REFLECTING <span style={{ fontWeight: 300 }}>|</span> REASON
           </h1>
           <h2>
             <span style={{ fontWeight: 300 }}>{"for the <3 of "}</span>
             {
-              <LogosLink
+              <ThemeLink
                 href="https://en.wiktionary.org/wiki/%CE%BB%CF%8C%CE%B3%CE%BF%CF%82"
                 className="Button--secondary"
                 target="_blank"
               >
                 <TextLoop
-                  interval={4000}
-                  adjustingSpeed={500}
+                  interval={3800}
+                  adjustingSpeed={200}
                   springConfig={{ stiffness: 170, damping: 30 }}
                   children={[
                     "Logos",
@@ -98,7 +74,7 @@ const Header = () => {
                     "God",
                   ]}
                 />
-              </LogosLink>
+              </ThemeLink>
             }
           </h2>
         </Tagline>

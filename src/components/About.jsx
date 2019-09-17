@@ -1,18 +1,19 @@
 import React from "react";
-import Button from "components/_ui/Button";
 import styled from "@emotion/styled";
-import dimensions from "styles/dimensions";
 import { RichText } from "prismic-reactjs";
 import PropTypes from "prop-types";
+
+import dimensions from "styles/dimensions";
+import colors from "styles/colors";
 
 const AboutContainer = styled("div")`
   padding-top: 1em;
   display: grid;
-  grid-template-columns: 8em 1fr 8em;
+  grid-template-columns: 1fr 8em;
   grid-gap: 3em;
 
   @media (max-width: ${dimensions.maxwidthTablet}px) {
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: 1fr 3fr;
   }
 
   @media (max-width: ${dimensions.maxwidthMobile}px) {
@@ -59,27 +60,26 @@ const AboutLink = styled("a")`
 
 const AboutBio = styled("div")`
   padding-bottom: 3em;
-  max-width: 480px;
+  border-right: 1px solid ${colors.themeBlue};
+  padding-right: 3em;
 
   @media (max-width: ${dimensions.maxwidthMobile}px) {
     grid-row: 2;
   }
 `;
 
-const AboutActions = styled("div")`
-  padding-top: 1em;
-  padding-bottom: 3em;
-
-  @media (max-width: ${dimensions.maxwidthMobile}px) {
-    padding: 0;
-    grid-column: 1 / -1;
-    grid-row: 1;
-  }
-`;
-
 const About = ({ bio, socialLinks }) => (
   <AboutContainer>
+    <AboutBio>{RichText.render(bio)}</AboutBio>
     <AboutLinkContainer>
+      <AboutLink
+        href="mailto:monica.wojciechowski@gmail.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Email me
+        <span>&#8594;</span>
+      </AboutLink>
       {socialLinks.map((social, i) => (
         <AboutLink
           key={i}
@@ -96,16 +96,6 @@ const About = ({ bio, socialLinks }) => (
         </AboutLink>
       ))}
     </AboutLinkContainer>
-    <AboutBio>{RichText.render(bio)}</AboutBio>
-    <AboutActions>
-      <a
-        href="mailto:monica.wojciechowski@gmail.com"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Button className="Button--secondary">Email me</Button>
-      </a>
-    </AboutActions>
   </AboutContainer>
 );
 
