@@ -103,80 +103,79 @@ const WorkAction = styled(Link)`
   }
 `;
 
-const RenderBody = ({ home, projects, meta }) =>
-  console.log(home) || (
-    <>
-      <Helmet
-        title={meta.title}
-        titleTemplate={`%s | ${meta.title}`}
-        meta={[
-          {
-            name: `description`,
-            content: meta.description,
-          },
-          {
-            property: `og:title`,
-            content: meta.title,
-          },
-          {
-            property: `og:description`,
-            content: meta.description,
-          },
-          {
-            property: `og:type`,
-            content: `website`,
-          },
-          {
-            name: `twitter:card`,
-            content: `summary`,
-          },
-          {
-            name: `twitter:creator`,
-            content: meta.author,
-          },
-          {
-            name: `twitter:title`,
-            content: meta.title,
-          },
-          {
-            name: `twitter:description`,
-            content: meta.description,
-          },
-        ].concat(meta)}
-      />
-      <HeroContainer>
-        <AnimationContainer>
-          <NatureAnimation />
-        </AnimationContainer>
-        <Hero>
-          {RichText.render(home.hero_title)}
-          <Link to={"/about"}>
-            <ThemeButton>{home.hero_button_text[0].text}</ThemeButton>
-          </Link>
-        </Hero>
-      </HeroContainer>
+const RenderBody = ({ home, projects, meta }) => (
+  <>
+    <Helmet
+      title={meta.title}
+      titleTemplate={`%s | ${meta.title}`}
+      meta={[
+        {
+          name: `description`,
+          content: meta.description,
+        },
+        {
+          property: `og:title`,
+          content: meta.title,
+        },
+        {
+          property: `og:description`,
+          content: meta.description,
+        },
+        {
+          property: `og:type`,
+          content: `website`,
+        },
+        {
+          name: `twitter:card`,
+          content: `summary`,
+        },
+        {
+          name: `twitter:creator`,
+          content: meta.author,
+        },
+        {
+          name: `twitter:title`,
+          content: meta.title,
+        },
+        {
+          name: `twitter:description`,
+          content: meta.description,
+        },
+      ].concat(meta)}
+    />
+    <HeroContainer>
+      <AnimationContainer>
+        <NatureAnimation />
+      </AnimationContainer>
+      <Hero>
+        {RichText.render(home.hero_title)}
+        <Link to={"/about"}>
+          <ThemeButton>{home.hero_button_text[0].text}</ThemeButton>
+        </Link>
+      </Hero>
+    </HeroContainer>
 
-      <Section>
-        <HomeContent content={home.content} />
-      </Section>
+    <Section>
+      <HomeContent content={home.content} />
+    </Section>
 
-      <Section>
-        {projects.map((project, i) => (
-          <ProjectCard
-            key={i}
-            category={project.node.project_category}
-            title={project.node.project_title}
-            description={project.node.project_preview_description}
-            thumbnail={project.node.project_preview_thumbnail}
-            uid={project.node._meta.uid}
-          />
-        ))}
-        <WorkAction to={"/work"}>
-          See more work <span>&#8594;</span>
-        </WorkAction>
-      </Section>
-    </>
-  );
+    <Section>
+      {projects.map((project, i) => (
+        <ProjectCard
+          key={i}
+          category={project.node.project_category}
+          title={project.node.project_title}
+          description={project.node.project_preview_description}
+          thumbnail={project.node.project_preview_thumbnail}
+          uid={project.node._meta.uid}
+        />
+      ))}
+      <WorkAction to={"/work"}>
+        See more work <span>&#8594;</span>
+      </WorkAction>
+    </Section>
+  </>
+);
 
 export default ({ data }) => {
   //Required check for no data being returned
