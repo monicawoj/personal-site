@@ -100,14 +100,14 @@ export default () => {
           {/* The Verbal (Writing) */}
           <div />
         </Link>
-        <Link activeClassName="Link--is-active" to="/work">
+        <Link activeClassName="Link--is-active" to="/projects">
           Projects
           {/* The Visual (Projects) */}
           <div />
         </Link>
-        <Link activeClassName="Link--is-active" to="/speaking">
+        <Link activeClassName="Link--is-active" to="/presentations">
           Presentations
-          {/* The Audible (Speaking) */}
+          {/* The Audible (Presentations) */}
           <div />
         </Link>
       </NavbarItems>

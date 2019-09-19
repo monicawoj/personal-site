@@ -41,6 +41,10 @@ const Hero = styled("div")`
   align-items: flex-start;
   max-width: 50%;
 
+  @media (max-width: ${dimensions.maxwidthMobile}px) {
+    max-width: 90%;
+  }
+
   h2 {
     margin-bottom: 1em;
 
@@ -170,7 +174,7 @@ const RenderBody = ({ home, projects, meta }) => (
           uid={project.node._meta.uid}
         />
       ))}
-      <WorkAction to={"/work"}>
+      <WorkAction to={"/projects"}>
         See more work <span>&#8594;</span>
       </WorkAction>
     </Section>

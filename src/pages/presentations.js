@@ -1,12 +1,11 @@
 import React from "react";
 import { shape } from "prop-types";
 import Helmet from "react-helmet";
-import { RichText } from "prismic-reactjs";
 import styled from "@emotion/styled";
 import dimensions from "styles/dimensions";
 import Layout from "components/Layout";
 import PresentationCard from "components/PresentationCard";
-import { useSiteMetadata, useSpeakingData } from "../hooks";
+import { usePresentationsData, useSiteMetadata } from "../hooks";
 
 const Section = styled("div")`
   margin-bottom: 10em;
@@ -26,20 +25,22 @@ const TitleContainer = styled("div")`
   margin: 0;
 `;
 
-const SpeakingPage = () => {
+const PresentationsPage = () => {
   const meta = useSiteMetadata();
-  const { title, subtitle, presentations } = useSpeakingData();
-  const sortByDate = (a, b) =>
+  const { title, presentations } = usePresentationsData();
+  const sortByDateAsc = (a, b) =>
     new Date(b.presentation_date) - new Date(a.presentation_date);
+  const sortByDateDesc = (a, b) =>
+    new Date(a.presentation_date) - new Date(b.presentation_date);
 
   if (!title || !presentations.length) return null;
 
   const pastPresentations = presentations
     .filter(item => new Date(item.presentation_date) <= new Date())
-    .sort(sortByDate);
+    .sort(sortByDateAsc);
   const upcomingPresentations = presentations
     .filter(item => new Date(item.presentation_date) > new Date())
-    .sort(sortByDate);
+    .sort(sortByDateDesc);
 
   return (
     <Layout>
@@ -89,11 +90,17 @@ const SpeakingPage = () => {
           </TitleContainer>
           <h3>Upcoming</h3>
           {upcomingPresentations.map(item => (
-            <PresentationCard {...item} />
+            <PresentationCard
+              {...item}
+              key={`${item.presentation_date}_${item.conference_name}`}
+            />
           ))}
           <h3>Past</h3>
           {pastPresentations.map(item => (
-            <PresentationCard {...item} />
+            <PresentationCard
+              {...item}
+              key={`${item.presentation_date}_${item.conference_name}`}
+            />
           ))}
         </Section>
       </>
@@ -101,9 +108,9 @@ const SpeakingPage = () => {
   );
 };
 
-SpeakingPage.propTypes = {
+PresentationsPage.propTypes = {
   meta: shape({}).isRequired,
   data: shape({}).isRequired,
 };
 
-export default SpeakingPage;
+export default PresentationsPage;

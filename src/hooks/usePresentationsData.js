@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from "gatsby";
 
-export const useSpeakingData = () => {
+export const usePresentationsData = () => {
   const {
     prismic: {
       allSpeakings: { edges },

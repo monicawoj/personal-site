@@ -65,7 +65,7 @@ const HomeContent = ({ content }) => (
         rel="noopener noreferrer"
       >
         <ThemeButton className="Button--secondary">
-          And there's always EMAIL :)
+          And there's always email
         </ThemeButton>
       </a>
     </Actions>

@@ -6,6 +6,7 @@ import TextLoop from "react-text-loop";
 import Logo from "components/Logo";
 import { ThemeLink } from "components/theme";
 import NavBar from "./NavBar";
+import dimensions from "styles/dimensions";
 
 const HeaderContainer = styled("div")`
   padding-top: 3em;
@@ -26,6 +27,12 @@ const Tagline = styled("div")`
   h1,
   h2 {
     margin: 0;
+  }
+
+  @media (max-width: ${dimensions.maxwidthMobile}px) {
+    h2 {
+      font-size: 22px;
+    }
   }
 `;
 

@@ -6,15 +6,15 @@ import styled from "@emotion/styled";
 import Layout from "components/Layout";
 import ProjectCard from "components/ProjectCard";
 
-const WorkTitle = styled("h1")`
+const ProjectsTitle = styled("h1")`
   margin-bottom: 1em;
 `;
 
-const Work = ({ projects, meta }) => (
+const Projects = ({ projects, meta }) => (
   <>
     <Helmet
-      title={`Work | reflect & refract`}
-      titleTemplate={`%s | Work | reflect & refract`}
+      title={`Projects | reflect & refract`}
+      titleTemplate={`%s | Projects | reflect & refract`}
       meta={[
         {
           name: `description`,
@@ -22,7 +22,7 @@ const Work = ({ projects, meta }) => (
         },
         {
           property: `og:title`,
-          content: `Work | reflect & refract`,
+          content: `Projects | reflect & refract`,
         },
         {
           property: `og:description`,
@@ -51,7 +51,7 @@ const Work = ({ projects, meta }) => (
       ].concat(meta)}
     />
     <Layout>
-      <WorkTitle>Projects</WorkTitle>
+      <ProjectsTitle>Projects</ProjectsTitle>
       <>
         {projects.map((project, i) => (
           <ProjectCard
@@ -73,10 +73,10 @@ export default ({ data }) => {
   const meta = data.site.siteMetadata;
   if (!projects) return null;
 
-  return <Work projects={projects} meta={meta} />;
+  return <Projects projects={projects} meta={meta} />;
 };
 
-Work.propTypes = {
+Projects.propTypes = {
   projects: PropTypes.array.isRequired,
 };
 

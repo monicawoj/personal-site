@@ -112,7 +112,7 @@ const Project = ({ project, meta }) => {
         )}
         <ProjectBody>
           {RichText.render(project.project_description)}
-          <WorkLink to={"/work"}>
+          <WorkLink to={"/projects"}>
             <ThemeButton className="Button--secondary">
               See other work
             </ThemeButton>
