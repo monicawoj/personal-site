@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import { Link } from "gatsby";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
@@ -38,12 +37,12 @@ const NavbarItems = styled("div")`
     margin: 2em;
     color: currentColor;
     text-decoration: none;
-    border-bottom: 3px solid transparent;
+    border-bothrefm: 3px solid transparent;
     font-weight: 600;
     font-size: 0.95em;
     height: 100%;
-    padding-bottom: 1.25em;
-    padding-top: 0.25em;
+    padding-bothrefm: 1.25em;
+    padding-hrefp: 0.25em;
     display: block;
     position: relative;
 
@@ -69,7 +68,7 @@ const NavbarItems = styled("div")`
       }
     }
 
-    &.Link--is-active {
+    &.a--is-active {
       &:after {
         background: ${colors.themeGreenDark};
         transition: 100ms ease-in-out background;
@@ -91,25 +90,25 @@ export default () => {
         />
       </NavBarIcon>
       <NavbarItems isExpanded={isNavExpanded}>
-        <Link activeClassName="Link--is-active" to="/about">
+        <a activeClassName="a--is-active" href="/about">
           About
           <div />
-        </Link>
-        <Link activeClassName="Link--is-active" to="/blog">
+        </a>
+        <a activeClassName="a--is-active" href="/blog">
           Thoughts
           {/* The Verbal (Writing) */}
           <div />
-        </Link>
-        <Link activeClassName="Link--is-active" to="/projects">
+        </a>
+        <a activeClassName="a--is-active" href="/projects">
           Projects
           {/* The Visual (Projects) */}
           <div />
-        </Link>
-        <Link activeClassName="Link--is-active" to="/presentations">
+        </a>
+        <a activeClassName="a--is-active" href="/presentations">
           Presentations
           {/* The Audible (Presentations) */}
           <div />
-        </Link>
+        </a>
       </NavbarItems>
     </NavBar>
   );

@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { StaticQuery, graphql, useStaticQuery } from "gatsby";
 import styled from "@emotion/styled";
 import { Global } from "@emotion/core";
 import globalStyles from "styles/global";
@@ -32,16 +31,6 @@ const LayoutContainer = styled.div`
 `;
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
-
   return (
     <LayoutContainer className="div">
       <Global styles={[globalStyles, typeStyles]} />

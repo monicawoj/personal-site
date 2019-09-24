@@ -10,7 +10,12 @@ const wrapper = promise =>
   });
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions;
+  const { createPage, createRedirect } = actions;
+  createRedirect({
+    fromPath: "/about",
+    toPath: "/about/index.html",
+    isPermanent: true,
+  });
 
   const result = await wrapper(
     graphql(`
@@ -62,8 +67,8 @@ exports.createPages = async ({ graphql, actions }) => {
     // The uid you assigned in Prismic is the slug!
     createPage({
       type: "Project",
-      match: "/project/:uid",
-      path: `/project/${edge.node._meta.uid}`,
+      match: "/projects/:uid",
+      path: `/projects/${edge.node._meta.uid}`,
       component: projectTemplate,
       context: {
         // Pass the unique ID (uid) through context so the template can filter by it

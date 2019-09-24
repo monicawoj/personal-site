@@ -105,7 +105,7 @@ const PostCard = ({ author, category, date, title, description, uid }) => (
 export default PostCard;
 
 PostCard.propTypes = {
-  author: PropTypes.string.isRequired,
+  author: PropTypes.string,
   category: PropTypes.array.isRequired,
   date: PropTypes.string.isRequired,
   title: PropTypes.array.isRequired,

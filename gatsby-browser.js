@@ -4,7 +4,10 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-const { registerLinkResolver } = require("gatsby-source-prismic-graphql")
-const { linkResolver } = require("./src/utils/linkResolver")
+// const { registerLinkResolver } = require("gatsby-source-prismic-graphql")
+// const { linkResolver } = require("./src/utils/linkResolver")
 
-registerLinkResolver(linkResolver)
+// registerLinkResolver(linkResolver)
+exports.onRouteUpdate = ({ location, prevLocation }) => {
+  // console.log(location);
+};

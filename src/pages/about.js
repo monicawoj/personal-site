@@ -1,12 +1,9 @@
 import React from "react";
-import { shape } from "prop-types";
-import Helmet from "react-helmet";
-import { RichText } from "prismic-reactjs";
+import { graphql } from "gatsby";
 import styled from "@emotion/styled";
 import dimensions from "styles/dimensions";
 import About from "components/About";
 import Layout from "components/Layout";
-import { useSiteMetadata, useAboutData } from "../hooks";
 
 const Section = styled("div")`
   margin-bottom: 10em;
@@ -22,67 +19,36 @@ const Section = styled("div")`
   }
 `;
 
-const AboutPage = ({ data, meta }) => (
-  <>
-    <Helmet
-      title={meta.title}
-      titleTemplate={`%s | ${meta.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: meta.description,
-        },
-        {
-          property: `og:title`,
-          content: meta.title,
-        },
-        {
-          property: `og:description`,
-          content: meta.description,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: meta.author,
-        },
-        {
-          name: `twitter:title`,
-          content: meta.title,
-        },
-        {
-          name: `twitter:description`,
-          content: meta.description,
-        },
-      ].concat(meta)}
-    />
-    <Section>
-      <h1>{data.about_title[0].text}</h1>
-      <About bio={data.about_bio} socialLinks={data.about_links} />
-    </Section>
-  </>
-);
+export default ({ data }) => {
+  if (!data) return null;
 
-export default () => {
-  const metaData = useSiteMetadata();
-  const aboutData = useAboutData();
-
-  if (!aboutData) return null;
+  const aboutData = data.prismic.allAbouts.edges[0].node;
 
   return (
     <Layout>
-      <AboutPage data={aboutData} meta={metaData} />
+      <Section>
+        <h1>{aboutData.about_title[0].text}</h1>
+        <About bio={aboutData.about_bio} socialLinks={aboutData.about_links} />
+      </Section>
     </Layout>
   );
 };
 
-AboutPage.propTypes = {
-  about: shape({}).isRequired,
-  meta: shape({}).isRequired,
-};
+export const query = graphql`
+  {
+    prismic {
+      allAbouts {
+        edges {
+          node {
+            about_title
+            about_bio
+            _linkType
+            about_links {
+              about_link
+            }
+          }
+        }
+      }
+    }
+  }
+`;

@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import styled from "@emotion/styled";
 import Layout from "components/Layout";
@@ -10,70 +9,29 @@ const ProjectsTitle = styled("h1")`
   margin-bottom: 1em;
 `;
 
-const Projects = ({ projects, meta }) => (
-  <>
-    <Helmet
-      title={`Projects | reflect & refract`}
-      titleTemplate={`%s | Projects | reflect & refract`}
-      meta={[
-        {
-          name: `description`,
-          content: meta.description,
-        },
-        {
-          property: `og:title`,
-          content: `Projects | reflect & refract`,
-        },
-        {
-          property: `og:description`,
-          content: meta.description,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: meta.author,
-        },
-        {
-          name: `twitter:title`,
-          content: meta.title,
-        },
-        {
-          name: `twitter:description`,
-          content: meta.description,
-        },
-      ].concat(meta)}
-    />
-    <Layout>
-      <ProjectsTitle>Projects</ProjectsTitle>
-      <>
-        {projects.map((project, i) => (
-          <ProjectCard
-            key={i}
-            category={project.node.project_category}
-            title={project.node.project_title}
-            description={project.node.project_preview_description}
-            thumbnail={project.node.project_preview_thumbnail}
-            uid={project.node._meta.uid}
-          />
-        ))}
-      </>
-    </Layout>
-  </>
+const Projects = ({ projects }) => (
+  <Layout>
+    <ProjectsTitle>Projects</ProjectsTitle>
+    <>
+      {projects.map((project, i) => (
+        <ProjectCard
+          key={i}
+          category={project.node.project_category}
+          title={project.node.project_title}
+          description={project.node.project_preview_description}
+          thumbnail={project.node.project_preview_thumbnail}
+          uid={project.node._meta.uid}
+        />
+      ))}
+    </>
+  </Layout>
 );
 
 export default ({ data }) => {
   const projects = data.prismic.allProjects.edges;
-  const meta = data.site.siteMetadata;
   if (!projects) return null;
 
-  return <Projects projects={projects} meta={meta} />;
+  return <Projects projects={projects} />;
 };
 
 Projects.propTypes = {
@@ -96,13 +54,6 @@ export const query = graphql`
             }
           }
         }
-      }
-    }
-    site {
-      siteMetadata {
-        title
-        description
-        author
       }
     }
   }
