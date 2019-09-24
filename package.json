@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-prismic-starter-prist",
+  "name": "reflecting-reason",
   "private": true,
-  "description": "A starter powered by Gatsby and Prismic to showcase portfolios and blogs.",
+  "description": "for the love of thought, speech, and story",
   "version": "0.1.0",
-  "author": "Marguerite Roth | marguerite.io | monica.wojciechowski@gmail.com",
+  "author": "Monica Wojciechowska | reflectingreason.com | monica.wojciechowski@gmail.com",
   "dependencies": {
     "@emotion/core": "^10.0.10",
     "@emotion/styled": "^10.0.12",
