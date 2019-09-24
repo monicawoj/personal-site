@@ -1,14 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import styled from "@emotion/styled";
-import TextLoop from "react-text-loop";
 import Helmet from "react-helmet";
-
+import HeaderTextLoop from "components/HeaderTextLoop";
 import Logo from "components/Logo";
 import { ThemeLink } from "components/theme";
 import NavBar from "./NavBar";
 import dimensions from "styles/dimensions";
-import { shape } from "prop-types";
 
 const HeaderContainer = styled("div")`
   padding-top: 3em;
@@ -39,6 +37,7 @@ const Tagline = styled("div")`
 `;
 
 const Header = () => {
+  const [showLoop, setShowLoop] = useState(false);
   const query = graphql`
     query SiteMetaData {
       site {
@@ -51,6 +50,12 @@ const Header = () => {
     }
   `;
   const meta = useStaticQuery(query);
+
+  useEffect(() => {
+    setShowLoop(true);
+    return () => setShowLoop(false);
+  }, []);
+
   return (
     <>
       <Helmet
@@ -111,29 +116,7 @@ const Header = () => {
                   className="Button--secondary"
                   target="_blank"
                 >
-                  <TextLoop
-                    interval={3800}
-                    adjustingSpeed={200}
-                    springConfig={{ stiffness: 170, damping: 30 }}
-                    children={[
-                      "Logos",
-                      "λόγος",
-                      "thought",
-                      "speech",
-                      "story",
-                      "information",
-                      "Word",
-                      "logic",
-                      "explanation",
-                      "contemplation",
-                      "communication",
-                      "dialogue",
-                      "rationality",
-                      "rhetoric",
-                      "discourse",
-                      "God",
-                    ]}
-                  />
+                  {showLoop ? <HeaderTextLoop /> : <span>Logos</span>}
                 </ThemeLink>
               }
             </h2>
@@ -145,7 +128,3 @@ const Header = () => {
 };
 
 export default Header;
-
-Header.propTypes = {
-  meta: shape({}).isRequired,
-};

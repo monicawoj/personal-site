@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
+import { Link } from "gatsby";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
@@ -90,25 +91,25 @@ export default () => {
         />
       </NavBarIcon>
       <NavbarItems isExpanded={isNavExpanded}>
-        <a activeClassName="a--is-active" href="/about">
+        <Link activeClassName="a--is-active" to="/about">
           About
           <div />
-        </a>
-        <a activeClassName="a--is-active" href="/blog">
+        </Link>
+        <Link activeClassName="a--is-active" to="/blog">
           Thoughts
           {/* The Verbal (Writing) */}
           <div />
-        </a>
-        <a activeClassName="a--is-active" href="/projects">
+        </Link>
+        <Link activeClassName="a--is-active" to="/projects">
           Projects
           {/* The Visual (Projects) */}
           <div />
-        </a>
-        <a activeClassName="a--is-active" href="/presentations">
+        </Link>
+        <Link activeClassName="a--is-active" to="/presentations">
           Presentations
           {/* The Audible (Presentations) */}
           <div />
-        </a>
+        </Link>
       </NavbarItems>
     </NavBar>
   );

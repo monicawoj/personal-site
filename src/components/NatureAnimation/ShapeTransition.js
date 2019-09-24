@@ -35,13 +35,16 @@ const ShapeTransition = ({ pathsArray }) => {
       .on("end", () => repeat({ element }));
   };
 
-  const runAnimation = element =>
-    select(element)
-      .attr("fill", themeGreen)
-      .transition()
-      .on("end", () => repeat({ element }));
+  const runAnimation = () => {
+    if (ref.current) {
+      select(ref.current)
+        .attr("fill", themeGreen)
+        .transition()
+        .on("end", () => repeat({ element: ref.current }));
+    }
+  };
 
-  useEffect(() => runAnimation(ref.current), []);
+  useEffect(runAnimation, []);
 
   return <path ref={ref} d={sun} />;
 };
