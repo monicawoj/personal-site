@@ -40,11 +40,10 @@ module.exports = {
         icon: `src/images/logo.png`, // This path is relative to the root of the site.
       },
     },
-    // https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "YOUR_GOOGLE_ANALYTICS_TRACKING_ID",
+        trackingId: "UA-68196341-3",
         head: true,
       },
     },
