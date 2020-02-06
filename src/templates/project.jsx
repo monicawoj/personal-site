@@ -49,7 +49,7 @@ const Project = ({ project, meta }) => {
   return (
     <>
       <Helmet
-        title={`${project.project_title[0].text} | reflect & refract`}
+        title={`${project.project_title[0].text} | Reflecting Reason`}
         titleTemplate={`%s | ${meta.title}`}
         meta={[
           {
@@ -58,7 +58,7 @@ const Project = ({ project, meta }) => {
           },
           {
             property: `og:title`,
-            content: `${project.project_title[0].text} | reflect & refract`,
+            content: `${project.project_title[0].text} | Reflecting Reason`,
           },
           {
             property: `og:description`,

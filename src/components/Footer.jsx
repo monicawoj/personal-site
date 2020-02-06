@@ -52,7 +52,7 @@ const Footer = () => (
       <Logo width={50} height={50} />
     </Link>
     <FooterAuthor href="https://www.linkedin.com/in/monicawoj/">
-      {"© 2019 — reflect & refract"}
+      {"© 2019 — Reflecting Reason"}
     </FooterAuthor>
   </FooterContainer>
 );

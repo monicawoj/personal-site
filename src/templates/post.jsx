@@ -99,7 +99,7 @@ const Post = ({ post, meta }) => {
   return (
     <>
       <Helmet
-        title={`${titleText} | reflect & refract`}
+        title={`${titleText} | Reflecting Reason`}
         titleTemplate={`%s | ${meta.title}`}
         meta={[
           {
@@ -108,7 +108,7 @@ const Post = ({ post, meta }) => {
           },
           {
             property: `og:title`,
-            content: `${titleText} | reflect & refract`,
+            content: `${titleText} | Reflecting Reason`,
           },
           {
             property: `og:description`,
@@ -150,9 +150,11 @@ const Post = ({ post, meta }) => {
         {post.post_hero_image && (
           <PostHeroContainer>
             <img src={post.post_hero_image.url} />
-            <PostHeroAnnotation>
-              {RichText.render(post.post_hero_annotation)}
-            </PostHeroAnnotation>
+            {post.post_hero_annotation && (
+              <PostHeroAnnotation>
+                {RichText.render(post.post_hero_annotation)}
+              </PostHeroAnnotation>
+            )}
           </PostHeroContainer>
         )}
         <PostBody>{RichText.render(post.post_body)}</PostBody>
