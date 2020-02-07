@@ -149,7 +149,7 @@ const Post = ({ post, meta }) => {
         </PostMetas>
         {post.post_hero_image && (
           <PostHeroContainer>
-            <img src={post.post_hero_image.url} />
+            <img src={post.post_hero_image.url} object-fit="contain" />
             {post.post_hero_annotation && (
               <PostHeroAnnotation>
                 {RichText.render(post.post_hero_annotation)}
