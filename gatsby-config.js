@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Reflecting Reason | Monica Wojciechowska`,
-    description: `for the love of thought, speech, and story`,
+    title: `The Polish American | Monica Wojciechowska`,
+    description: `red, white, and true`,
     author: `Monica Wojciechowska`,
   },
   plugins: [
@@ -18,7 +18,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/src/assets/images`,
       },
     },
     {
@@ -31,13 +31,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Reflecting Reason`,
-        short_name: `ReflectingReason`,
+        name: `The Polish American`,
+        short_name: `ThePolishAmerican`,
         start_url: `/`,
         background_color: `#eee`,
         theme_color: `#eee`,
         display: `minimal-ui`,
-        icon: `src/images/logo.png`, // This path is relative to the root of the site.
+        icon: `src/assets/svgs/logo.svg`, // This path is relative to the root of the site.
       },
     },
     {
@@ -51,7 +51,7 @@ module.exports = {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
-          include: /src/,
+          include: /svgs/,
         },
       },
     },

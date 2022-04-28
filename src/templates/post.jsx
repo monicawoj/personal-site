@@ -99,7 +99,7 @@ const Post = ({ post, meta }) => {
   return (
     <>
       <Helmet
-        title={`${titleText} | Reflecting Reason`}
+        title={`${titleText} | The Polish American`}
         titleTemplate={`%s | ${meta.title}`}
         meta={[
           {
@@ -108,7 +108,7 @@ const Post = ({ post, meta }) => {
           },
           {
             property: `og:title`,
-            content: `${titleText} | Reflecting Reason`,
+            content: `${titleText} | The Polish American`,
           },
           {
             property: `og:description`,

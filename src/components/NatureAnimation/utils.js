@@ -1,10 +1,10 @@
 import { interpolate } from "flubber";
 import { easeSin } from "d3-ease";
 import { interpolateRgb } from "d3-interpolate";
-import getTree from "./images/tree.svg";
-import getSun from "./images/sun.svg";
-import getFlower from "./images/flower.svg";
-import getBoxes from "./images/boxes.svg";
+import getTree from "./svgs/tree.svg";
+import getSun from "./svgs/sun.svg";
+import getFlower from "./svgs/flower.svg";
+import getBoxes from "./svgs/boxes.svg";
 
 export const transitionShape = (transition, { color, path }) => {
   const element = transition.selection();

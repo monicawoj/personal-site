@@ -25,7 +25,7 @@ const PresentationCardContainer = styled("div")`
     cursor: pointer;
 
     .PresentationCardAction {
-      color: ${colors.themeGreenDark};
+      color: ${colors.themeDark};
       transition: all 150ms ease-in-out;
 
       span {

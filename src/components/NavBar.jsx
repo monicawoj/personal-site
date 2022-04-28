@@ -64,14 +64,14 @@ const NavbarItems = styled("div")`
 
     &:hover {
       div {
-        background: ${colors.themeGreenDark};
+        background: ${colors.themeDark};
         transition: 100ms ease-in-out background;
       }
     }
 
     &.a--is-active {
       &:after {
-        background: ${colors.themeGreenDark};
+        background: ${colors.themeDark};
         transition: 100ms ease-in-out background;
       }
     }
@@ -84,7 +84,7 @@ export default () => {
     <NavBar>
       <NavBarIcon>
         <FontAwesomeIcon
-          color={colors.themeBlue}
+          color={colors.themePrimary}
           icon={faBars}
           size="3x"
           onClick={() => setIsNavExpanded(!isNavExpanded)}

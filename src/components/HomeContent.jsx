@@ -38,9 +38,9 @@ const Content = styled("div")`
 
   a {
     text-decoration: none;
-    color: ${colors.themeBlue};
+    color: ${colors.themePrimary};
     &:hover {
-      color: ${colors.themeGreen};
+      color: ${colors.themeSecondary};
     }
   }
 `;

@@ -3,24 +3,23 @@ import TextLoop from "react-text-loop";
 
 const HeaderTextLoop = () => (
   <TextLoop
-    interval={3800}
+    interval={3000}
     adjustingSpeed={200}
     springConfig={{ stiffness: 170, damping: 30 }}
     children={[
-      "Logos",
+      "Poland",
+      "America",
+      "people",
+      "stories",
       "λόγος",
       "thought",
-      "speech",
-      "story",
+      "free speech",
       "information",
-      "Word",
       "logic",
       "explanation",
       "contemplation",
       "communication",
       "dialogue",
-      "rationality",
-      "rhetoric",
       "discourse",
       "God",
     ]}

@@ -5,7 +5,7 @@ import dimensions from "styles/dimensions";
 
 const ButtonContainer = styled("button")`
   padding: 1em 2em;
-  background: ${colors.themeBlue};
+  background: ${colors.themePrimary};
   font-weight: 600;
   color: white;
   outline: none;
@@ -33,8 +33,8 @@ const ButtonContainer = styled("button")`
     height: 100%;
     background: linear-gradient(
       135deg,
-      ${colors.themeGreen} 0%,
-      ${colors.themeBlue} 100%
+      ${colors.themeSecondary} 0%,
+      ${colors.themePrimary} 100%
     );
     z-index: -1;
   }
@@ -46,13 +46,13 @@ const ButtonContainer = styled("button")`
   }
 
   &.Button--secondary {
-    background: ${colors.themeGreen};
+    background: ${colors.themeSecondary};
     color: ${colors.white};
     padding: 0.95em 1.8em;
     font-size: 0.95rem;
 
     &:hover {
-      background: ${colors.themeGreenDark};
+      background: ${colors.themeDark};
       transition: background 100ms ease-in-out;
     }
   }

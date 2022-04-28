@@ -8,28 +8,28 @@ import { transitionShape } from "./utils";
 const ShapeTransition = ({ pathsArray }) => {
   let ref = useRef(null);
   const [sun, flower, tree, boxes] = pathsArray;
-  const { themeBlue, themeGreen, themeGreenDark, themeGreenLight } = colors;
+  const { themePrimary, themeSecondary, themeDark, themeLight } = colors;
 
   const repeat = ({ element }) => {
     active(element)
       .transition()
       .call(transitionShape, {
-        color: themeBlue,
+        color: themeSecondary,
         path: flower,
       })
       .transition()
       .call(transitionShape, {
-        color: themeGreenDark,
+        color: themeDark,
         path: tree,
       })
       .transition()
       .call(transitionShape, {
-        color: themeGreenLight,
+        color: themePrimary,
         path: boxes,
       })
       .transition()
       .call(transitionShape, {
-        color: themeGreen,
+        color: themeLight,
         path: sun,
       })
       .on("end", () => repeat({ element }));
@@ -38,7 +38,7 @@ const ShapeTransition = ({ pathsArray }) => {
   const runAnimation = () => {
     if (ref.current) {
       select(ref.current)
-        .attr("fill", themeGreen)
+        .attr("fill", themeLight)
         .transition()
         .on("end", () => repeat({ element: ref.current }));
     }

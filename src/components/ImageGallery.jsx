@@ -15,6 +15,8 @@ const ImageGallery = ({ items }) => {
       thumbnailAlt: originalAlt,
     };
   });
+
+  console.log(items);
   return <ReactImageGallery items={images} />;
 };
 

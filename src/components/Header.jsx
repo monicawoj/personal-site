@@ -7,6 +7,7 @@ import Logo from "components/Logo";
 import { ThemeLink } from "components/theme";
 import NavBar from "./NavBar";
 import dimensions from "styles/dimensions";
+import title_image from "../assets/images/website_title.png";
 
 const HeaderContainer = styled("div")`
   padding-top: 3em;
@@ -105,9 +106,8 @@ const Header = () => {
         </HeaderContent>
         <HeaderContent>
           <Tagline>
-            <h1>
-              REFLECTING <span style={{ fontWeight: 300 }}>|</span> REASON
-            </h1>
+            {/* <h1>THE POLISH AMERICAN</h1> */}
+            <img src={title_image} width={650} height={100} />
             <h2>
               <span style={{ fontWeight: 300 }}>{"for the <3 of "}</span>
               {

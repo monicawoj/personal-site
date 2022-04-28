@@ -57,11 +57,11 @@ const colors = {
   teal200: "#D1EFEF",
   teal100: "#E8F7F7",
 
-  themeBlue: "rgba(88, 123, 127, 1)",
-  themeBlack: "rgba(30, 32, 25, 1)",
-  themeGreenDark: "rgba(57, 64, 50, 1)",
-  themeGreen: "rgba(141, 171, 127, 1)",
-  themeGreenLight: "rgba(207, 238, 158, 1)",
+  themePrimary: "#1565c0",
+  themeSecondary: "#7D4E57",
+  themeDark: "#3C3B6E",
+  themeLight: "#CECECE",
+  themeBlack: "#252525",
 };
 
 export default colors;

@@ -50,13 +50,13 @@ const Hero = styled("div")`
     a {
       text-decoration: none;
       transition: all 100ms ease-in-out;
-      color: ${colors.themeBlue};
+      color: ${colors.themePrimary};
 
       &:hover {
         cursor: pointer;
         transition: all 100ms ease-in-out;
         color: ${colors.white};
-        background-color: ${colors.themeGreenDark};
+        background-color: ${colors.themeDark};
       }
     }
   }
@@ -95,7 +95,7 @@ const WorkAction = styled(Link)`
   }
 
   &:hover {
-    color: ${colors.themeGreenDark};
+    color: ${colors.themeDark};
     transition: all 150ms ease-in-out;
 
     span {

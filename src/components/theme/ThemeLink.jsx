@@ -3,8 +3,8 @@ import colors from "styles/colors";
 
 export const ThemeLink = styled("a")`
   text-decoration: none;
-  color: ${colors.themeBlue};
+  color: ${colors.themePrimary};
   &:hover {
-    color: ${colors.themeGreen};
+    color: ${colors.themeSecondary};
   }
 `;

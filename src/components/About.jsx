@@ -55,7 +55,7 @@ const AboutLink = styled("a")`
 
 const AboutBio = styled("div")`
   padding-bottom: 3em;
-  border-right: 1px solid ${colors.themeBlue};
+  border-right: 1px solid ${colors.themePrimary};
   padding-right: 3em;
 
   @media (max-width: ${dimensions.maxwidthMobile}px) {
